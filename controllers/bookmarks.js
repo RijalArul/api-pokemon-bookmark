@@ -130,7 +130,9 @@ class BookmarkController {
 
   static async all (req, res) {
     try {
-      const bookmarks = await Bookmark.findAll()
+      const bookmarks = await Bookmark.findAll({
+        order: [['id', 'ASC']]
+      })
 
       res.status(200).json({
         data: bookmarks,
